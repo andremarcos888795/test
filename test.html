@@ -1,12 +1,16 @@
-<p>
-
-teste y
-</p>
+<button onclick="fecharWebView()" style="margin-left: 10px; font-size: 30px">
+FECHAR !!
+</button>
 
 
 <script type="text/javascript">
-    function init() {
-        console.log(1111);
-    }
-    window.onload = init;
+    function fecharWebView() {
+      try {
+          window.webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify({
+              fecharWebView: true
+        }));
+      } catch (e) {
+        console.log("Falha ao fechar webview: " + e)
+      }
+	}
 </script>
